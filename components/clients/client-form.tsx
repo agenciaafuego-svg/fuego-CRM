@@ -33,6 +33,7 @@ export function ClientForm({ open, onClose, onSubmit, client, loading, existingC
     status: "pendente" as Client["status"],
     proposed_value: 0,
     closed_value: 0,
+    google_meu_negocio: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
@@ -51,6 +52,7 @@ export function ClientForm({ open, onClose, onSubmit, client, loading, existingC
         status: client.status,
         proposed_value: client.proposed_value,
         closed_value: client.closed_value,
+        google_meu_negocio: client.google_meu_negocio || "",
       })
       setSelectedDate(clientDate)
       setSelectedTime(format(clientDate, "HH:mm"))
@@ -63,6 +65,7 @@ export function ClientForm({ open, onClose, onSubmit, client, loading, existingC
         status: "pendente",
         proposed_value: 0,
         closed_value: 0,
+        google_meu_negocio: "",
       })
       setSelectedDate(undefined)
       setSelectedTime("")
@@ -105,6 +108,7 @@ export function ClientForm({ open, onClose, onSubmit, client, loading, existingC
           status: "pendente",
           proposed_value: 0,
           closed_value: 0,
+          google_meu_negocio: "",
         })
         setSelectedDate(undefined)
         setSelectedTime("")
@@ -204,6 +208,19 @@ export function ClientForm({ open, onClose, onSubmit, client, loading, existingC
                     placeholder="Ex: (11) 99999-9999"
                   />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="google_meu_negocio" className="text-slate-700 dark:text-slate-300">
+                  Google Meu Negócio
+                </Label>
+                <Input
+                  id="google_meu_negocio"
+                  value={formData.google_meu_negocio}
+                  onChange={(e) => setFormData({ ...formData, google_meu_negocio: e.target.value })}
+                  className="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100"
+                  placeholder="Ex: https://maps.google.com/meu-negocio/..."
+                />
               </div>
             </div>
 

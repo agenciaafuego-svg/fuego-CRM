@@ -21,6 +21,7 @@ export interface Client {
   created_at: string
   updated_at: string
   google_meet_link?: string
+  google_meu_negocio?: string
   admin_acknowledged: boolean
   acknowledged_by?: string
   acknowledged_at?: string
