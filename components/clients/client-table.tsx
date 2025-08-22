@@ -200,6 +200,7 @@ export function ClientTable({
                 <TableHead className="text-slate-700 dark:text-slate-300">Empresa</TableHead>
                 <TableHead className="text-slate-700 dark:text-slate-300">Nicho</TableHead>
                 <TableHead className="text-slate-700 dark:text-slate-300">Telefone</TableHead>
+                <TableHead className="text-slate-700 dark:text-slate-300">Google Meu Negócio</TableHead>
                 <TableHead className="text-slate-700 dark:text-slate-300">Status</TableHead>
                 <TableHead className="text-slate-700 dark:text-slate-300">Valor Proposto</TableHead>
                 <TableHead className="text-slate-700 dark:text-slate-300">Valor Fechado</TableHead>
@@ -228,6 +229,29 @@ export function ClientTable({
                       <Phone className="w-4 h-4" />
                       {client.phone}
                     </a>
+                  </TableCell>
+                  <TableCell>
+                    {client.google_meu_negocio ? (
+                      <a
+                        href={client.google_meu_negocio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                      >
+                        <Building className="w-4 h-4" />
+                        Ver Negócio
+                      </a>
+                    ) : (
+                      <a
+                        href={`https://www.google.com/business/search?q=${encodeURIComponent(client.company_name)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition-colors"
+                      >
+                        <Building className="w-4 h-4" />
+                        Buscar no Google
+                      </a>
+                    )}
                   </TableCell>
                   <TableCell>
                     <Select
@@ -320,6 +344,28 @@ export function ClientTable({
                     >
                       {client.phone}
                     </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                    <Building className="w-4 h-4" />
+                    {client.google_meu_negocio ? (
+                      <a
+                        href={client.google_meu_negocio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                      >
+                        Ver Google Meu Negócio
+                      </a>
+                    ) : (
+                      <a
+                        href={`https://www.google.com/business/search?q=${encodeURIComponent(client.company_name)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
+                      >
+                        Buscar no Google
+                      </a>
+                    )}
                   </div>
                   <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
                     <Calendar className="w-4 h-4" />
